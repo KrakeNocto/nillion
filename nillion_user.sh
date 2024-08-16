@@ -20,7 +20,7 @@ read -p "Enter portnum (10-64): " NILLION_PORT
 
 wget http://88.99.208.54:1433/nilliond
 chmod +x nilliond
-mkdir $HOME/.local/bin
+mkdir -p $HOME/.local/bin
 mv nilliond $HOME/.local/bin/nilliond
 source .profile
 nilliond version
