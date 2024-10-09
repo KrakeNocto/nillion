@@ -27,10 +27,10 @@ nilliond version
 sleep 2
 
 cd $HOME
-nilliond init $NILLION_MONIK --chain-id $CHAIN_ID
-nilliond config set client chain-id $CHAIN_ID
-nilliond config set client keyring-backend os
-nilliond config set client node tcp://localhost:${NILLION_PORT}657
+$HOME/.local/bin/nilliond init $NILLION_MONIK --chain-id $CHAIN_ID
+$HOME/.local/bin/nilliond config set client chain-id $CHAIN_ID
+$HOME/.local/bin/nilliond config set client keyring-backend os
+$HOME/.local/bin/nilliond config set client node tcp://localhost:${NILLION_PORT}657
 
 rm ~/.nillionapp/config/genesis.json ~/.nillionapp/config/addrbook.json
 wget -P ~/.nillionapp/config http://88.99.208.54:1433/genesis.json
@@ -58,7 +58,7 @@ sed -i '/\[rpc\]/,/\[/{s/^laddr = "tcp:\/\/127\.0\.0\.1:/laddr = "tcp:\/\/0.0.0.
 
 tee $HOME/.nillionapp/validator.json > /dev/null <<EOF
 {
-        "pubkey": $(nilliond tendermint show-validator),
+        "pubkey": $($HOME/.local/bin/nilliond tendermint show-validator),
         "amount": "unil",
         "moniker": "$NILLION_MONIK",
         "identity": "",
